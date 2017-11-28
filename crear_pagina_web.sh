@@ -8,8 +8,8 @@ if [ "$USERUID" != "" ];
 then
   LDAPUID=$(expr $USERUID + 1)
   mkdir /var/www/www/$DEPT
-  chown $USERUID:apache /var/www/www/$DEPT
-  chcon -t public_content_rw_t /var/www/www/$DEPT
+  chown $USERUID:apache /var/www/www/$USER
+  chcon -t public_content_rw_t /var/www/www/$USER
 else
   echo "El usuario $USER debe estar creado previamente en el servidor LDAP"
 fi
