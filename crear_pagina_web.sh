@@ -7,7 +7,7 @@ USERUID=$(ldapsearch -x -D "uid=replica,dc=sergio,dc=gonzalonazareno,dc=org" -W 
 if [ "$USERUID" != "" ];
 then
   LDAPUID=$(expr $USERUID + 1)
-  mkdir /var/www/www/$DEPT
+  mkdir /var/www/www/$USER
   chown $USERUID:apache /var/www/www/$USER
   chcon -t public_content_rw_t /var/www/www/$USER
 else
