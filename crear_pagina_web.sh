@@ -1,6 +1,6 @@
 #!/bin/bash
 DEPT=$1
-USER="user_$dept"
+USER="user_$DEPT"
 
 echo "Password para consultar el servidor LDAP"
 USERUID=$(ldapsearch -x -D "uid=replica,dc=sergio,dc=gonzalonazareno,dc=org" -W -b "dc=sergio,dc=gonzalonazareno,dc=org" uid=$USER -h mickey-int|grep uidNumber|awk -F' ' '{ print $2 }')
