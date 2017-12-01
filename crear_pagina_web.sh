@@ -10,6 +10,7 @@ then
   chown $USERUID:apache /var/www/www/$DEPT
   chcon -t public_content_rw_t /var/www/www/$DEPT
 else
+  echo "Usuario no existe, se procede a crearlo, password para consultar el último uid"
   USERUID=$(ldapsearch -x -D "uid=replica,dc=sergio,dc=gonzalonazareno,dc=org" -W -b "dc=sergio,dc=gonzalonazareno,dc=org" uidNumber -h mickey.ferrete.gonzalonazareno.org|grep uidNumber|awk -F' ' '{ print $2 }'|tail -n1)
   USERUID=$(expr $USERUID + 1)
   echo "dn: uid=$USER,ou=People,dc=sergio,dc=gonzalonazareno,dc=org
